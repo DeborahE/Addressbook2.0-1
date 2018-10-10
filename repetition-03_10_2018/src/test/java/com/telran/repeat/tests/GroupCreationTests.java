@@ -11,12 +11,18 @@ public class GroupCreationTests extends TestBase {
   int before = app.getGroupHelper().getGroupsCount();
 
   app.getGroupHelper().initGroupCreation();
-  app.getGroupHelper().fillGroupForm(new Group("new", "new 1", "new"));
+  app.getGroupHelper().fillGroupForm(new Group()
+                  .withGroupName("")
+                  .withGroupHeader("")
+                  .withGroupFooter(""));
+//          .withGroupName("").withGroupHeader()
+//          .withGroupName("new"), "new 1", "new"));
   app.getGroupHelper().confirmGroupCreation();
   app.getGroupHelper().returnToGroupsPage();
+
   int after = app.getGroupHelper().getGroupsCount();
 
-  System.out.println("count before is: " + before + " and count after is: " + after);
+ // System.out.println("count before is: " + before + " and count after is: " + after);
   Assert.assertEquals(after, before+1);
 
 }
